@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bsq.h                                              :+:      :+:    :+:   */
+/*   ft_check_symbols.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/10 18:00:06 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/10 18:04:54 by ahector          ###   ########.fr       */
+/*   Created: 2021/07/10 18:46:22 by ahector           #+#    #+#             */
+/*   Updated: 2021/07/10 20:07:25 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BSQ_H
-# define BSQ_H
-#include <stdlib.h>
+#include "bsq.h"
 
-typedef struct s_map
+int	ft_check_symbols(t_map *abc, char **s2)
 {
-	char	*param;
-	int		n;
-	char	**map;
-}	t_map;
+	int		k;
+	int		l;
+	int		m;
 
-int	ft_strlen(char *str);
-int	checkLines(char *str);
-int ft_is_argum(char *str, t_map *abc);
-
-#endif
+	m = abc->n;
+	k = 0;
+	l = 0;
+	while (k < m)
+	{
+		l = 0;
+		while (s2[k][l] != '\0')
+		{
+			if (s2[k][l] != abc->param[0] && s2[k][l] != abc->param[1] && s2[k][l] != abc->param[2])
+				return (1);
+			l++;
+		}
+		k++;
+	}
+	return (0);
+}
