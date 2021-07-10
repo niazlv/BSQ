@@ -6,7 +6,7 @@
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 13:57:38 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/10 20:08:06 by ahector          ###   ########.fr       */
+/*   Updated: 2021/07/10 22:10:23 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
  */
 int	checkLines(char *str[], t_map *abc)
 {
-	int	i;
-	int	cmp;
+	unsigned int	i;
+	int				cmp;
 
 	i = 0;
 	cmp = ft_strlen(str[0]);

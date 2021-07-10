@@ -6,7 +6,7 @@
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 18:46:22 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/10 20:07:25 by ahector          ###   ########.fr       */
+/*   Updated: 2021/07/10 21:22:46 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	ft_check_symbols(t_map *abc, char **s2)
 		l = 0;
 		while (s2[k][l] != '\0')
 		{
-			if (s2[k][l] != abc->param[0] && s2[k][l] != abc->param[1] && s2[k][l] != abc->param[2])
+			if (s2[k][l] != abc->param[0] && s2[k][l] != abc->param[1] && \
+					s2[k][l] != abc->param[2])
 				return (1);
 			l++;
 		}
