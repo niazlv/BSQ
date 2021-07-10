@@ -12,6 +12,7 @@
 
 #ifndef BSQ_H
 # define BSQ_H
+#include <stdlib.h>
 
 typedef struct s_map
 {
@@ -22,5 +23,6 @@ typedef struct s_map
 
 int	ft_strlen(char *str);
 int	checkLines(char *str);
+int ft_is_argum(char *str, t_map *abc);
 
 #endif
