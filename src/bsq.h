@@ -6,20 +6,24 @@
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 18:00:06 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/11 16:04:18 by ahector          ###   ########.fr       */
+/*   Updated: 2021/07/11 18:19:00 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BSQ_H
 # define BSQ_H
 # include <stdlib.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdio.h>
 
 typedef struct s_map
 {
 	char			*param;
-	unsigned int	*size;
+	unsigned int	size;
 	char			*rawParam;
-	unsigned int	*n;
+	unsigned int	n;
 	char			**map;
 }	t_map;
 
