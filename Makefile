@@ -5,6 +5,7 @@ all:
 fast:
 	gcc -c src/*.c
 	gcc *.o -o bsq
+	./bsq
 clean:
 	rm *.o
 fclean:

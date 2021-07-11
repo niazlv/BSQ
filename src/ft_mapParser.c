@@ -6,7 +6,7 @@
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 20:19:34 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/10 22:09:46 by ahector          ###   ########.fr       */
+/*   Updated: 2021/07/11 16:04:16 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	find_param(char *str, t_map *abc)
 		if (d == '\n')
 			close(fd);
 		abc->rawParam[count] = d;
+		printf("%c\n",d);
 		count++;
 	}
 	return (count);
@@ -88,19 +89,20 @@ int	ft_mapParser(char *filename, t_map *abc)
 		return (1);
 	abc->rawParam = (char *)malloc(sizeof(char) * fd);
 	if (abc->rawParam == (void *)0)
-		return (1);
+		return (2);
 	find_param(filename, abc);
 	if (ft_is_argum(abc->rawParam, abc))
-		return (1);
+		return (3);
 	fd = find_len(filename, 2);
 	if (fd == -1)
-		return (1);
+		return (4);
+	abc->size = (unsigned int *)malloc(sizeof(unsigned int));
 	abc->size = fd;
 	abc->map = (char **)malloc(sizeof(char) * abc->n);
 	if (abc->map == (void *)0)
-		return (1);
+		return (5);
 	if (ft_malloc_map(abc, fd))
-		return (1);
+		return (6);
 	free(abc->rawParam);
 	return (0);
 }
