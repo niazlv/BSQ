@@ -6,7 +6,7 @@
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 18:00:06 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/12 14:21:29 by ahector          ###   ########.fr       */
+/*   Updated: 2021/07/12 16:34:19 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,6 @@ int		ft_check_symbols(t_map *abc);
 int		ft_mapParser(char *filename, t_map *abc);
 int		ft_mapParser_v2(char *filename, t_map *abc);
 void	ft_print_struct_map(t_map *abc);
+int		ft_find_square(t_map *abc);
+
 #endif
