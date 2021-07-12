@@ -6,7 +6,7 @@
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 20:19:34 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/11 19:14:52 by ahector          ###   ########.fr       */
+/*   Updated: 2021/07/12 14:13:30 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,9 @@ int	find_param(char *str, t_map *abc)
  */
 int	ft_malloc_map(t_map *abc, unsigned int size)
 {
-	unsigned int	i;
-	i = 0;
-	while (i < abc->n)
-	{
-		abc->map[i] = (char *)malloc(sizeof(char) * size);
-		if (abc->map[i] == (void *)0)
-			return (1);
-		printf("i=%d", i);
-		i++;
-	}
+	abc->map = (char *)malloc(sizeof(char) * size * abc->n);
+	if (abc->map == (void *)0)
+		return (1);
 	return (0);
 }
 
@@ -100,10 +93,7 @@ int	ft_mapParser(char *filename, t_map *abc)
 		return (5);
 	//abc->size = (unsigned int *)malloc(sizeof(unsigned int));
 	abc->size = fd;
-	abc->map = (char **)malloc(sizeof(char) * abc->n);
-	if (abc->map == (void *)0)
-		return (5);
-	if (ft_malloc_map(abc, fd))
+	if (ft_malloc_map(abc, abc->size))
 		return (6);
 	free(abc->rawParam);
 	return (0);

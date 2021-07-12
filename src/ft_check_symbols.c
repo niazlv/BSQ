@@ -6,29 +6,31 @@
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 18:46:22 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/11 16:04:13 by ahector          ###   ########.fr       */
+/*   Updated: 2021/07/12 13:58:34 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-int	ft_check_symbols(t_map *abc, char **s2)
+int	ft_check_symbols(t_map *abc)
 {
-	int		k;
-	int		l;
-	int		m;
+	unsigned int	k;
+	unsigned int	l;
 
-	m = abc->n;
 	k = 0;
 	l = 0;
-	while (k < m)
+	while (k < abc->n)
 	{
 		l = 0;
-		while (s2[k][l] != '\0')
+		while (abc->map[(abc->size * k) + l] != '\0')
 		{
-			if (s2[k][l] != abc->param[0] && s2[k][l] != abc->param[1] && \
-					s2[k][l] != abc->param[2])
+			if (abc->map[(abc->size * k) + l] != abc->param[0] && \
+					abc->map[(abc->size * k) + l] != abc->param[1] && \
+					abc->map[(abc->size * k) + l] != abc->param[2])
+			{
+				printf("err: %c\n", abc->map[(abc->size * k) + l]);
 				return (1);
+			}
 			l++;
 		}
 		k++;

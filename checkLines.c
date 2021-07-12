@@ -6,7 +6,7 @@
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 13:57:38 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/11 16:04:12 by ahector          ###   ########.fr       */
+/*   Updated: 2021/07/12 13:54:37 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
  *	Если ошибок нет, то возвращаем 0, если вдруг есть какое-то несовпадение,
  *	то возвращаем 1
  */
-int	checkLines(char *str[], t_map *abc)
+int	checkLines(t_map *abc)
 {
 	unsigned int	i;
 	int				cmp;
-
+	char			*str[];
 	i = 0;
 	cmp = ft_strlen(str[0]);
 	while (i < abc->n)
