@@ -5,89 +5,96 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/12 14:24:03 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/13 20:34:08 by ahector          ###   ########.fr       */
+/*   Created: 2021/07/13 20:23:04 by ahector           #+#    #+#             */
+/*   Updated: 2021/07/13 21:17:17 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-/*
- * Name of variable |	= vars[N]
- *-------------------------------
- *	i				|	= vars[0]
- *	j				|	= vars[1]
- *	max				|	= vars[2]
- *	flag			|	= vars[3]
- *  sqlen			|	= vars[4]
- *  k				|	= vars[5]
- */
-
-void	ft_what_v2(unsigned int *vars, t_map *abc)
+void	ft_replace(t_map *abc, unsigned int x, unsigned int y, \
+		unsigned int side_len)
 {
-	while (vars[5] <= vars[4] + vars[1])
-	{
-		if (abc->map[(abc->size * (vars[0] + vars[4])) + vars[5]] \
-				== abc->param[1])
-		{
-			vars[3] = 0;
-			break ;
-		}
-		vars[5]++;
-	}
-	vars[5] = vars[0];
-	while (vars[5] <= vars[4] + vars[0])
-	{
-		if (abc->map[(abc->size * vars[5]) + \
-				(vars[1] + vars[4])] == abc->param[1])
-		{
-			vars[3] = 0;
-			break ;
-		}
-		vars[5]++;
-	}
-}
+	unsigned int	x0;
+	unsigned int	y0;
 
-void	ft_what(unsigned int *vars, t_map *abc)
-{
-	if (abc->map[(abc->size * vars[0]) + vars[1]] == abc->param[0])
+	y0 = y;
+	while (y0 <= y + side_len)
 	{
-		vars[3] = 1;
-		vars[4] = 1;
-		while (vars[4] + vars[0] < abc->n && vars[4] + \
-				vars[1] < abc->size && vars[3])
+		x0 = x;
+		while (x0 <= x + side_len)
 		{
-			vars[5] = vars[1];
-			ft_what_v2(vars, abc);
-			if (vars[3])
-				vars[4]++;
+			abc->map[(abc->size * y0) + x0] = abc->param[2];
+			x0++;
 		}
-		if (vars[2] < vars[4])
-			vars[2] = vars[4];
-	}
+		y0++;
+	}	
 }
 
 int	ft_find_square(t_map *abc)
 {
-	unsigned int	*vars;
-	unsigned int	sum;
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	max;
+	int				flag;
+	unsigned int	sqlen;
+	unsigned int	k;
+	unsigned int	xmax;
+	unsigned int	ymax;
+	unsigned int	xm;
+	unsigned int	ym;
 
-	vars = (unsigned int *)malloc(sizeof(unsigned int) * 6);
-	if (vars == (void *)0)
-		return (-1);
-	vars[2] = 0;
-	vars[0] = 0;
-	while (vars[0] < abc->n)
+
+	max = 0;
+	i = 0;
+	while (i < abc->n)			//от i до вертикального конца карты
 	{
-		vars[1] = 0;
-		while (vars[1] < abc->size)
+		j = 0;
+		while (j < abc->size)	//от j до горизонтального конца карты
 		{
-			ft_what(vars, abc);
-			vars[1]++;
+			if (abc->map[(abc->size * i) + j] == abc->param[0])	//если нашли пустоту, то
+			{
+				flag = 1;
+				sqlen = 1;
+				while (sqlen + i < abc->n && sqlen + j < abc->size && flag)
+				{
+					k = j;
+					while (k <= sqlen + j)
+					{
+						if (abc->map[(abc->size * (i + sqlen)) + k] == abc->param[1])
+						{
+							xmax = k + 1;
+							flag = 0;
+							break;
+						}
+						k++;
+					}
+					k = i;
+					while (k<= sqlen + i)
+					{
+						if (abc->map[(abc->size * k) + (j + sqlen)] == abc->param[1])
+						{
+							ymax = k + 1;
+							flag = 0;
+							break;
+						}
+						k++;
+					}
+					if (flag)
+						sqlen++;
+				}
+				if (max < sqlen)
+				{
+					xm = j;
+					ym = i;
+					max = sqlen;
+				}
+			}
+			j++;
 		}
-		vars[0]++;
+		i++;
 	}
-	sum = vars[2];
-	free(vars);
-	return (sum * sum);
+	printf("x0=%d, xmax=%d, y0=%d, ymax=%d\n", xm, xm + max - 1, ym, ym + max - 1);
+	ft_replace(abc, xm, ym, max - 1);
+	return (max * max);
 }

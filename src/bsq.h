@@ -6,7 +6,7 @@
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 18:00:06 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/12 16:34:19 by ahector          ###   ########.fr       */
+/*   Updated: 2021/07/13 21:20:09 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef struct s_map
 }	t_map;
 
 int		ft_strlen(char *str);
-//int	checkLines(t_map *abc);
 int		ft_is_argum(char *str, t_map *abc);
 int		ft_check_symbols(t_map *abc);
 int		ft_mapParser(char *filename, t_map *abc);
