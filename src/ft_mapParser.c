@@ -6,18 +6,17 @@
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 20:19:34 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/12 14:13:30 by ahector          ###   ########.fr       */
+/*   Updated: 2021/07/13 20:09:01 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-unsigned int	find_len(char *str, unsigned int t)
+unsigned int	find_len(char *str, unsigned int t, unsigned int k)
 {
 	int				fd;
 	unsigned int	count;
 	char			d;
-	unsigned int	k;
 
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
@@ -57,15 +56,11 @@ int	find_param(char *str, t_map *abc)
 		if (d == '\n')
 			close(fd);
 		abc->rawParam[count] = d;
-		//printf("%c\n",d);
 		count++;
 	}
 	return (count);
 }
 
-/*
- *	Проверить насколько хорошо выделена память
- */
 int	ft_malloc_map(t_map *abc, unsigned int size)
 {
 	abc->map = (char *)malloc(sizeof(char) * size * abc->n);
@@ -78,7 +73,7 @@ int	ft_mapParser(char *filename, t_map *abc)
 {
 	unsigned int	fd;
 
-	fd = find_len(filename, 1);
+	fd = find_len(filename, 1, 0);
 	if (fd == 0)
 		return (1);
 	abc->rawParam = (char *)malloc(sizeof(char) * fd);
@@ -88,10 +83,9 @@ int	ft_mapParser(char *filename, t_map *abc)
 		return (3);
 	if (ft_is_argum(abc->rawParam, abc))
 		return (4);
-	fd = find_len(filename, 2);
+	fd = find_len(filename, 2, 0);
 	if (fd == 0)
 		return (5);
-	//abc->size = (unsigned int *)malloc(sizeof(unsigned int));
 	abc->size = fd;
 	if (ft_malloc_map(abc, abc->size))
 		return (6);

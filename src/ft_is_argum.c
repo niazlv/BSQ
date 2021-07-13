@@ -6,7 +6,7 @@
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 18:46:40 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/11 18:21:41 by ahector          ###   ########.fr       */
+/*   Updated: 2021/07/13 20:04:24 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ int	ft_is_argum(char *str, t_map *abc)
 	unsigned int	i;
 
 	n = 0;
-	//abc->n = (unsigned int *)malloc(sizeof(unsigned int));
-	//if (abc->n == (void *)0)
-	//	return (1);
 	abc->n = 0;
 	k = ft_strlen(str);
 	if (k > 3)
@@ -40,8 +37,6 @@ int	ft_is_argum(char *str, t_map *abc)
 			return (1);
 		i++;
 	}
-	//printf("%d\n", abc->n);
 	abc->n = n;
-	//printf("%d\n", abc->n);
 	return (0);
 }

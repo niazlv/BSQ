@@ -6,7 +6,7 @@
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:16:06 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/12 14:32:39 by ahector          ###   ########.fr       */
+/*   Updated: 2021/07/13 20:12:57 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ unsigned int	ft_while(t_map *abc, char *filename, char d, unsigned int k)
 	{
 		if (d == '\n')
 		{
-			if (k != 0 && i < abc->size)
+			if (k++ != 0 && i < abc->size)
 				return (1);
-			k++;
 			i = 0;
 		}
 		else
@@ -35,11 +34,7 @@ unsigned int	ft_while(t_map *abc, char *filename, char d, unsigned int k)
 			if (i > abc->size)
 				return (1);
 			if (k >= 1)
-			{
-				abc->map[(abc->size * (k - 1)) + i] = d;
-				//printf("i wanna help! %d times!\n", i);
-			}
-			i++;
+				abc->map[(abc->size * (k - 1)) + i++] = d;
 		}
 	}
 	close(fd);
