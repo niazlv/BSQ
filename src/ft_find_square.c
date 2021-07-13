@@ -6,73 +6,71 @@
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 14:24:03 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/13 13:02:13 by ahector          ###   ########.fr       */
+/*   Updated: 2021/07/13 19:43:15 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bsq.h"
 
-int	ft_while_v2(t_map *abc, unsigned int x0, unsigned int y0)
-{
-	unsigned int	y;
-	unsigned int	x;
-	unsigned int	ymax;
-	unsigned int	xmax;
-
-	ymax = 0;
-	xmax = 0;
-	y = y0;
-	while (y < abc->n)
-	{
-		x = x0;
-		while (x < abc->size)
-		{
-			if (abc->map[(abc->size * y) + x] == abc->param[1] && xmax < ((x - 1) - x0))
-			{
-				xmax = x - 1 - x0;
-				ymax = y - 1 - y0;
-				//printf("x=%d, xmax=%d; ", x, xmax);
-				break;
-			}
-			x++;
-		}
-		y++;
-	}
-	//printf("%d %d\n", ymax, xmax);
-	if (ymax > xmax)
-	{
-		return (xmax * xmax);
-	}
-	else
-	{
-		return (ymax * ymax);
-	}
-}
+/*
+ * Name of variable |	= vars[N]
+ *-------------------------------
+ *	i				|	= vars[0]
+ *	j				|	= vars[1]
+ *	max				|	= vars[2]
+ *	flag			|	= vars[3]
+ *  sqlen			|	= vars[4]
+ *  k				|	= vars[5]
+ */
 
 int	ft_find_square(t_map *abc)
 {
-	unsigned int	y;
-	unsigned int	x;
-	unsigned int	max;
-	unsigned int	tmp;
-
-	max = 0;
-	y = 0;
-	while (y < abc->n)
+	unsigned int	*vars;
+	vars = (unsigned int *)malloc(sizeof(unsigned int) * 6);
+	if (vars == (void *)0)
+		return (-1);
+	vars[2] = 0;
+	vars[0] = 0;
+	while (vars[0] < abc->n)
 	{
-		x = 0;
-		while (x < abc->size)
+		vars[1] = 0;
+		while (vars[1] < abc->size)
 		{
-			if (abc->map[(abc->size * y) + x] == abc->param[0])
+			if (abc->map[(abc->size * vars[0]) + vars[1]] == abc->param[0])
 			{
-				//printf("%d %d: ", y, x);
-				tmp = ft_while_v2(abc, x, y);
-				if (tmp > max)
-					max = tmp;
+				vars[3] = 1;
+				vars[4] = 1;
+				while (vars[4] + vars[0] < abc->n && vars[4] + vars[1] < abc->size && vars[3])
+				{
+					vars[5] = vars[1];
+					while (vars[5] <= vars[4] + vars[1])
+					{
+						if (abc->map[(abc->size * (vars[0] + vars[4])) + vars[5]] == abc->param[1])
+						{
+							vars[3] = 0;
+							break;
+						}
+						vars[5]++;
+					}
+					vars[5] = vars[0];
+					while (vars[5]<= vars[4] + vars[0])
+					{
+						if (abc->map[(abc->size * vars[5]) + (vars[1] + vars[4])] == abc->param[1])
+						{
+							vars[3] = 0;
+							break;
+						}
+						vars[5]++;
+					}
+					if (vars[3])
+						vars[4]++;
+				}
+				if (vars[2] < vars[4])
+					vars[2] = vars[4];
 			}
-			x++;
+			vars[1]++;
 		}
-		y++;
+		vars[0]++;
 	}
-	return (max);
+	return (vars[2] * vars[2]);
 }
