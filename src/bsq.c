@@ -6,7 +6,7 @@
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 14:24:14 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/14 23:09:47 by ahector          ###   ########.fr       */
+/*   Updated: 2021/07/14 23:12:53 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	ft_start_input(void)
 		return (2);
 	if (ft_find_square(&abc) < 4)
 		return (3);
+	write(1, "\n", 1);
 	ft_print_struct_map(&abc);
 	free(abc.param);
 	free(abc.rawParam);
