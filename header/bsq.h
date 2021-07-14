@@ -6,7 +6,7 @@
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 18:00:06 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/14 20:19:21 by ahector          ###   ########.fr       */
+/*   Updated: 2021/07/14 23:10:20 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include <stdio.h>
 
 typedef struct s_map
 {

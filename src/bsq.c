@@ -6,7 +6,7 @@
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 14:24:14 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/14 23:03:13 by ahector          ###   ########.fr       */
+/*   Updated: 2021/07/14 23:09:47 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_start_point(char *str)
 	return (0);
 }
 
-int	ft_start_input()
+int	ft_start_input(void)
 {
 	t_map	abc;
 
