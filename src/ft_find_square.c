@@ -6,7 +6,7 @@
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 14:24:03 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/13 21:33:12 by ahector          ###   ########.fr       */
+/*   Updated: 2021/07/14 21:48:05 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ void	ft_what(unsigned int *vars, t_map *abc)
 		}
 		if (vars[2] < vars[4])
 		{
-			vars[8] = vars[6];
-			vars[9] = vars[7];
+			vars[8] = vars[1];
+			vars[9] = vars[0];
 			vars[2] = vars[4];
 		}
 	}
