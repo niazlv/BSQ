@@ -6,7 +6,7 @@
 #    By: qestefan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 12:27:45 by qestefan          #+#    #+#              #
-#    Updated: 2021/07/14 12:40:40 by qestefan         ###   ########.fr        #
+#    Updated: 2021/07/14 22:47:50 by ahector          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ ${NAME}:${OBJ}
 clean:
 	rm -f ${OBJ}
 
-flean: clean
+fclean: clean
 	rm -f ${NAME}
 
 re: fclean all

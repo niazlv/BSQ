@@ -6,7 +6,7 @@
 /*   By: ahector <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 14:24:03 by ahector           #+#    #+#             */
-/*   Updated: 2021/07/14 21:48:05 by ahector          ###   ########.fr       */
+/*   Updated: 2021/07/14 23:02:50 by ahector          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,8 @@ int	ft_find_square(t_map *abc)
 		vars[0]++;
 	}
 	sum = vars[2];
-	ft_replace(abc, vars[8], vars[9], sum - 1);
+	if (sum > 0)
+		ft_replace(abc, vars[8], vars[9], sum - 1);
 	free(vars);
 	return (sum * sum);
 }
